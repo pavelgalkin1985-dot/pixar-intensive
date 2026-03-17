@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F0F9FF">
+    <meta property="og:title" content="Из Pixar-уровня — в миллионные просмотры">
+    <meta property="og:description" content="7-дневный практический интенсив. Преврати красивую AI-анимацию в вирусные Shorts и Reels.">
+    <meta property="og:type" content="website">
+    <title>Из Pixar-уровня — в миллионные просмотры</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Nunito', 'sans-serif'],
+                    },
+                    colors: {
+                        pixar: {
+                            blue: '#0EA5E9',
+                            lightblue: '#BAE6FD',
+                            yellow: '#FBBF24',
+                            red: '#EF4444',
+                            dark: '#1E293B',
+                            cloud: '#F8FAFC'
+                        }
+                    },
+                    boxShadow: {
+                        '3d-btn': '0 8px 0 #D97706, 0 15px 20px rgba(0,0,0,0.2)',
+                        '3d-btn-active': '0 0px 0 #D97706, 0 5px 10px rgba(0,0,0,0.2)',
+                        'clay': '10px 10px 20px #d9d9d9, -10px -10px 20px #ffffff, inset 2px 2px 5px rgba(255,255,255,0.8), inset -3px -3px 10px rgba(0,0,0,0.05)',
+                        'clay-dark': '15px 15px 30px rgba(0,0,0,0.2), inset 2px 2px 5px rgba(255,255,255,0.2)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F0F9FF;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* Игрушечная 3D кнопка */
+        .btn-3d {
+            transition: all 0.15s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .btn-3d:active {
+            transform: translateY(8px);
+            box-shadow: 0 0px 0 #D97706, 0 5px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Мягкие карточки-облака */
+        .clay-card {
+            background: #ffffff;
+            border-radius: 32px;
+            border: 4px solid #F1F5F9;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.4s;
+        }
+        .clay-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #BAE6FD;
+        }
+
+        /* Летающие элементы фона */
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        .floating-delayed {
+            animation: float 7s ease-in-out infinite 2s;
+        }
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        /* Анимация появления при скролле */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px) scale(0.95);
+            transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Декоративный градиентный текст */
+        .text-gradient {
+            background: linear-gradient(135deg, #0EA5E9, #8B5CF6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="text-pixar-dark antialiased relative">
+
+    <!-- Декоративные фоновые элементы -->
+    <div class="fixed top-20 left-10 w-32 h-32 bg-yellow-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 floating z-[-1]"></div>
+    <div class="fixed top-40 right-20 w-48 h-48 bg-blue-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 floating-delayed z-[-1]"></div>
+    <div class="fixed bottom-20 left-1/3 w-40 h-40 bg-purple-300 rounded-full mix-blend-multiply filter blur-2xl opacity-50 floating z-[-1]"></div>
+
+    <!-- БЛОК 1: ГЛАВНЫЙ ЭКРАН -->
+    <section class="min-h-screen flex items-center justify-center pt-20 pb-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto text-center relative z-10 reveal">
+            <div class="inline-block bg-white text-pixar-blue font-bold px-6 py-2 rounded-full mb-6 shadow-clay text-sm sm:text-base border-2 border-blue-100">
+                ✨ Для тех, кто умеет делать крутые AI-видео, но устал от низких охватов
+            </div>
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-black mb-8 leading-tight tracking-tight">
+                Из «Pixar-уровня» <br class="hidden sm:block">
+                в <span class="text-gradient">миллионные просмотры</span>
+            </h1>
+            <p class="text-xl sm:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto leading-relaxed font-semibold">
+                7-дневный практический интенсив. Перестаньте тратить недели на один ролик. Соберите свой контент-движок, встройте вирусные механики в свою авторскую вселенную и запустите системный трафик — без потери качества и стиля.
+            </p>
+            <a href="https://m.vk.com/settings?act=change_addr" target="_blank" rel="noopener noreferrer" class="btn-3d inline-block bg-pixar-yellow text-amber-900 font-black text-xl px-12 py-5 rounded-full shadow-3d-btn hover:bg-yellow-400">
+                Иду за просмотрами 🚀
+            </a>
+        </div>
+    </section>
+
+    <!-- БЛОК 2: БОЛЬ -->
+    <section class="py-20 px-4 bg-white relative z-10 rounded-t-[3rem] shadow-[0_-20px_50px_rgba(0,0,0,0.05)]">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16 reveal">Узнаете себя? 💔</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+                <div class="clay-card p-8 reveal">
+                    <div class="text-4xl mb-4">🕰️</div>
+                    <p class="text-lg font-bold text-slate-700">Вы тратите дни на генерацию сцен, чистку промптов и сложную анимацию, а видео собирает смешные 300 просмотров.</p>
+                </div>
+                <div class="clay-card p-8 reveal" style="transition-delay: 100ms;">
+                    <div class="text-4xl mb-4">📱</div>
+                    <p class="text-lg font-bold text-slate-700">Вам физически больно, когда откровенно халтурные ролики, снятые на тапок, собирают миллионы, а ваше «искусство» игнорируется.</p>
+                </div>
+                <div class="clay-card p-8 reveal" style="transition-delay: 200ms;">
+                    <div class="text-4xl mb-4">🤡</div>
+                    <p class="text-lg font-bold text-slate-700">Вы думаете, что для роста аккаунта нужно скатиться в треш, снимать тупые тренды и предать свой вкус.</p>
+                </div>
+                <div class="clay-card p-8 reveal" style="transition-delay: 300ms;">
+                    <div class="text-4xl mb-4">🤯</div>
+                    <p class="text-lg font-bold text-slate-700">Каждый новый ролик вы придумываете с нуля (новый мир, новый герой, сюжет), и это неимоверно выматывает.</p>
+                </div>
+            </div>
+
+            <div class="bg-pixar-dark text-white rounded-3xl p-8 md:p-12 shadow-2xl reveal transform rotate-1 hover:rotate-0 transition-transform duration-300">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="text-6xl text-pixar-red floating">🚨</div>
+                    <div>
+                        <h3 class="text-2xl md:text-3xl font-black mb-4 text-pixar-yellow">Вывод: Ваша проблема — не в таланте.</h3>
+                        <p class="text-xl text-slate-300">Ваша проблема — в формате упаковки. Алгоритмы соцсетей награждают не за трудоемкость, а за мгновенную считываемость эмоции.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 3: ИДЕЯ -->
+    <section class="py-24 px-4 bg-gradient-to-b from-sky-400 to-blue-500 text-white relative overflow-hidden">
+        <!-- Декор -->
+        <div class="absolute top-0 left-0 w-full h-12 bg-white rounded-b-[50%] z-0"></div>
+        
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+            <h2 class="text-4xl md:text-6xl font-black mb-8 reveal">Мы не будем учиться «делать хуже».<br>Мы научимся «делать вирусно».</h2>
+            <p class="text-xl md:text-2xl mb-12 font-semibold text-sky-100 reveal">
+                На прошлом обучении вы получили сложный навык: создавать красивую картинку, персонажей и атмосферу. Здесь мы построим мост к просмотрам. Вы научитесь брать работающие вирусные механики и переносить их в свой мир.
+            </p>
+            
+            <div class="bg-white text-pixar-dark p-8 md:p-10 rounded-[2.5rem] shadow-clay-dark reveal transform scale-105">
+                <p class="text-sm font-bold text-slate-400 uppercase tracking-widest mb-4">Формула интенсива</p>
+                <div class="flex flex-wrap justify-center items-center gap-4 text-xl md:text-2xl font-black">
+                    <span class="bg-blue-100 text-blue-600 px-4 py-2 rounded-2xl">Трендовая механика</span>
+                    <span class="text-slate-300">+</span>
+                    <span class="bg-yellow-100 text-yellow-600 px-4 py-2 rounded-2xl">Уникальный герой</span>
+                    <span class="text-slate-300">+</span>
+                    <span class="bg-purple-100 text-purple-600 px-4 py-2 rounded-2xl">Визуальный стиль</span>
+                    <span class="text-slate-300">+</span>
+                    <span class="bg-green-100 text-green-600 px-4 py-2 rounded-2xl">Быстрый продакшн</span>
+                    <span class="text-4xl text-pixar-red mx-2">=</span>
+                    <span class="bg-gradient-to-r from-pink-500 to-orange-400 text-white px-6 py-3 rounded-2xl shadow-lg transform rotate-2">Узнаваемый вирусный формат</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 4: ПРОГРАММА ИНТЕНСИВА -->
+    <section id="program" class="py-24 px-4 bg-slate-50 relative">
+        <div class="absolute top-0 left-0 w-full h-12 bg-blue-500 rounded-b-[50%] z-0"></div>
+        
+        <div class="max-w-6xl mx-auto relative z-10 mt-10">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16 text-pixar-dark reveal">Программа: 7 дней трансформации 🎬</h2>
+            
+            <div class="space-y-6">
+                <!-- День 1 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-red-400">
+                    <div class="bg-red-100 text-red-500 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">01</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Иллюзия «красоты»: почему ваши шедевры не растут</h3>
+                        <p class="text-slate-600 text-lg">Разрушаем миф «сложно = популярно». Разбираем анатомию форматов. Вы поймете, почему зритель пролистывает дорогие ролики, найдете свои главные ошибки в упаковке и почините первые 2 секунды ваших видео.</p>
+                    </div>
+                </div>
+
+                <!-- День 2 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-orange-400">
+                    <div class="bg-orange-100 text-orange-500 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">02</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Авторский вирус: кради как продюсер</h3>
+                        <p class="text-slate-600 text-lg">Как брать популярные форматы и встраивать их в свою вселенную. Мы не копируем чужое в лоб, мы берем механику (неловкость, абсурд, ожидание/реальность) и заставляем вашего героя прожить её в вашем уникальном стиле.</p>
+                    </div>
+                </div>
+
+                <!-- День 3 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-yellow-400">
+                    <div class="bg-yellow-100 text-yellow-600 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">03</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Конструктор Short-form: сценарий, который досматривают</h3>
+                        <p class="text-slate-600 text-lg">Анатомия ролика: Хук (1 сек) → Ситуация → Эскалация → Payoff. Создаем конвейер идей. Жесткое правило дня: если идею ролика нельзя пересказать устно за 10 секунд, она слишком сложная — мы её выбрасываем.</p>
+                    </div>
+                </div>
+
+                <!-- День 4 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-green-400">
+                    <div class="bg-green-100 text-green-500 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">04</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Контент-движок: ускорение х5</h3>
+                        <p class="text-slate-600 text-lg">Как перестать делать всё с нуля. Собираем вашу личную базу: шаблоны сцен, готовые промпты, пресеты эмоций героя. Вы переходите от «ручной сборки» к эффективному системному конвейеру.</p>
+                    </div>
+                </div>
+
+                <!-- День 5 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-sky-400">
+                    <div class="bg-sky-100 text-sky-500 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">05</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Магия серийности: заставляем зрителя подписаться</h3>
+                        <p class="text-slate-600 text-lg">Люди не подписываются на разовые залетные видео, они подписываются на ожидание. Создаем серийный формат, где зритель с первой секунды узнает вашего героя и заранее предвкушает его реакцию.</p>
+                    </div>
+                </div>
+
+                <!-- День 6 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-indigo-400">
+                    <div class="bg-indigo-100 text-indigo-500 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">06</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Ролик как гипотеза: мышление медиапродюсера</h3>
+                        <p class="text-slate-600 text-lg">Учимся тестировать контент. Как смена первого кадра, подписи или темпа меняет удержание. Начинаем смотреть на метрики (досмотры, репосты, конверсии), а не только на личные ощущения художника.</p>
+                    </div>
+                </div>
+
+                <!-- День 7 -->
+                <div class="clay-card p-6 md:p-8 flex flex-col md:flex-row gap-6 items-start reveal border-l-8 border-l-purple-500">
+                    <div class="bg-purple-100 text-purple-600 font-black text-3xl w-20 h-20 rounded-2xl flex items-center justify-center shrink-0 shadow-inner">07</div>
+                    <div>
+                        <h3 class="text-2xl font-bold mb-3">Ваша личная вирусная фабрика</h3>
+                        <p class="text-slate-600 text-lg">Финальная сборка. Выстраиваем систему на месяц вперед: что публикуем, где ускоряемся, а где оставляем премиальный стиль. Вы выходите с готовым контент-пакетом и четким планом действий.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- БЛОК 5: РЕЗУЛЬТАТ -->
+    <section class="py-24 px-4 bg-white relative">
+        <div class="max-w-5xl mx-auto">
+            <h2 class="text-4xl md:text-5xl font-black text-center mb-16 reveal">С чем вы выйдете через 7 дней? 🏆</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+                <div class="bg-sky-50 rounded-3xl p-6 flex items-start gap-4 reveal">
+                    <div class="bg-green-400 text-white rounded-full p-2 mt-1 shadow-md"><i class="fas fa-check"></i></div>
+                    <p class="text-lg font-bold text-slate-700">У вас есть 1 главный герой и четкая, повторяемая «вирусная роль» для него.</p>
+                </div>
+                <div class="bg-sky-50 rounded-3xl p-6 flex items-start gap-4 reveal" style="transition-delay: 100ms;">
+                    <div class="bg-green-400 text-white rounded-full p-2 mt-1 shadow-md"><i class="fas fa-check"></i></div>
+                    <p class="text-lg font-bold text-slate-700">Настроен личный Контент-движок: библиотека ассетов, ускоряющая работу в 5 раз.</p>
+                </div>
+                <div class="bg-sky-50 rounded-3xl p-6 flex items-start gap-4 reveal" style="transition-delay: 200ms;">
+                    <div class="bg-green-400 text-white rounded-full p-2 mt-1 shadow-md"><i class="fas fa-check"></i></div>
+                    <p class="text-lg font-bold text-slate-700">Готовая линейка из 3 серийных форматов, которые вы можете делать на потоке.</p>
+                </div>
+                <div class="bg-sky-50 rounded-3xl p-6 flex items-start gap-4 reveal" style="transition-delay: 300ms;">
+                    <div class="bg-green-400 text-white rounded-full p-2 mt-1 shadow-md"><i class="fas fa-check"></i></div>
+                    <p class="text-lg font-bold text-slate-700">Пул из 15–30 идей для роликов, расписанных по структуре высокого удержания.</p>
+                </div>
+            </div>
+
+            <div class="text-center reveal">
+                <p class="text-2xl md:text-3xl font-black text-slate-800 mb-10">Главное: Вы начнете мыслить не как уставший художник, а как <span class="text-pixar-blue bg-blue-100 px-3 py-1 rounded-xl">эффективный медиапроизводитель.</span></p>
+                <a href="https://m.vk.com/settings?act=change_addr" target="_blank" rel="noopener noreferrer" class="btn-3d inline-block bg-pixar-yellow text-amber-900 font-black text-2xl px-14 py-6 rounded-full shadow-3d-btn hover:bg-yellow-400 animate-pulse">
+                    Занять место на интенсиве
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-500 py-8 text-center text-sm">
+        <p>© 2026 AI Creators. Все права защищены.</p>
+    </footer>
+
+    <!-- Скрипт для плавной анимации при скролле -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.15
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach((el) => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
